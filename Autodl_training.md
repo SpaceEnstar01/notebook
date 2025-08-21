@@ -306,6 +306,49 @@ nohup python train3.py > train3.log 2>&1 &   # [3] 2175
 ---
 
  
+
+````markdown
+# 数据训练模块 - AutoDL
+
+## 增大训练参数 (成功训练的)
+
+```bash
+python lerobot/scripts/train.py \
+  --dataset.repo_id /root/lerobot/data/zhuiPick3 \
+  --policy.type act \
+  --output_dir outputs/train/act_alicia_duo_model_final \
+  --job_name alicia_duo_act_training_final \
+  --policy.device cuda \
+  --batch_size 64 \
+  --steps 20000 \
+  --save_freq 1000 \
+  --eval_freq 1000 \
+  --log_freq 500
+````
+
+---
+
+## AutoDL 50000 次训练 (后台运行)
+
+进行 autoDL 50000 次训练，后台程序训练 **diffusion** 正在运行：2025.07.31
+
+```bash
+nohup python lerobot/scripts/train.py \
+  --dataset.repo_id /root/lerobot/data/pickBox1 \
+  --policy.type tdmpc \
+  --output_dir outputs/train/pickBox5 \
+  --job_name pickBox5 \
+  --policy.device cuda \
+  --batch_size 1 \
+  --steps 50000 \
+  --save_freq 1000 \
+  --eval_freq 1000 \
+  --log_freq 500 \
+  > train.log 2>&1 &
+```
+
+ 
+
  
 
 
