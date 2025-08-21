@@ -161,6 +161,150 @@ python lerobot/scripts/train.py \
   ```
 
 ---
+
+ 
+
+````markdown
+# 数据采集模块
+
+成功完成的数据采集模块的 bash code （采集 50 个 episodes；2 camera）
+
+```bash
+python lerobot/scripts/control_robot.py \
+--robot.type=alicia_duo \
+--control.type=record \
+--control.fps=30 \
+--control.single_task="pickBox1" \
+--control.root=/home/zexuan/Robot/data/pickBox1 \
+--control.repo_id=Enstar07/pickBox1 \
+--control.num_episodes=50 \
+--control.warmup_time_s=15 \
+--control.episode_time_s=28 \
+--control.reset_time_s=10 \
+--control.push_to_hub=true
+````
+
+---
+
+### 对应的数据训练模块的 bash code 本地训练跑通测试代码
+
+```bash
+python lerobot/scripts/train.py \
+  --dataset.repo_id /home/zexuan/Robot/data/pickBox1 \
+  --policy.type act \
+  --output_dir outputs/train/pickBoxTest  \
+  --job_name pickBoxTest \
+  --policy.device cuda \
+  --batch_size 32 \
+  --steps 100  \
+  --save_freq 10  \
+  --eval_freq 10  \
+  --log_freq 10
+```
+
+---
+
+### 对应的数据训练模块的 bash code AUTODL 训练代码（采集 50 个 episodes；2 camera）
+
+```bash
+python lerobot/scripts/train.py \
+  --dataset.repo_id /root/lerobot/data/pickBox1  \
+  --policy.type act \
+  --output_dir outputs/train/pickBox2  \
+  --job_name pickBox2  \
+  --policy.device cuda \
+  --batch_size 32 \
+  --steps 60000 \
+  --save_freq 4000 \
+  --eval_freq 4000 \
+  --log_freq 1000 
+```
+
+---
+
+### smolvla 尝试
+
+```bash
+python lerobot/scripts/train.py \
+  --policy.path=lerobot/smolvla_base \
+  --dataset.repo_id=/root/lerobot/data/pickBox1 \
+  --output_dir=outputs/train/pickBox1_vla \
+  --job_name=pickBox1_vla \
+  --policy.device=cuda \
+  --batch_size=32 \
+  --steps=30000 \
+  --save_freq=2000 \
+  --eval_freq=1000 \
+  --log_freq=1000
+```
+
+---
+
+### 成功进行 autoDL 80000 次训练，后台程序训练
+
+```bash
+nohup python lerobot/scripts/train.py \
+  --dataset.repo_id /root/lerobot/data/pickBox1 \
+  --policy.type act \
+  --output_dir outputs/train/pickBox3 \
+  --job_name pickBox3 \
+  --policy.device cuda \
+  --batch_size 32 \
+  --steps 80000 \
+  --save_freq 5000 \
+  --eval_freq 5000 \
+  --log_freq 500 \
+  > train.log 2>&1 &
+```
+
+---
+
+### 远程后台训练的用法
+
+你看到的这一行：
+
+```
+[3] 2175
+```
+
+是正常的提示信息，不是报错。
+
+✅ 它的含义如下：
+
+* `[3]`：这是当前 shell 会话中启动的第 3 个后台任务。
+* `2175`：这是这个后台进程的 **进程号（PID）**。
+
+🔍 举例说明：
+假如你连续运行了几个训练任务：
+
+```bash
+nohup python train1.py > train1.log 2>&1 &   # [1] 1234
+nohup python train2.py > train2.log 2>&1 &   # [2] 1567
+nohup python train3.py > train3.log 2>&1 &   # [3] 2175
+```
+
+系统就会这样编号。
+
+✅ 接下来你可以：
+
+* 查看实时日志：
+
+  ```bash
+  tail -f train.log
+  ```
+* 查看进程是否在运行：
+
+  ```bash
+  ps -p 2175
+  ```
+* 终止训练（如果需要）：
+
+  ```bash
+  kill -9 2175
+  ```
+
+---
+
  
  
 
