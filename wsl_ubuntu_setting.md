@@ -57,6 +57,9 @@ ls -l /dev/ttyACM*
 ls -l /dev/video*
 ```
 
- 
+```
+
+ ✅  
 
 
+```
