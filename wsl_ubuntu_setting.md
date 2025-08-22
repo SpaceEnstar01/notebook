@@ -58,5 +58,6 @@ ls -l /dev/video*
 ```
 
 ``` 
-- 代码块前后各空一行，GitHub 渲染更稳。
+验证摄像头编号，检测camera脚本：
+ffplay -f v4l2 -input_format mjpeg -video_size 640x480 -framerate 30 -i /dev/video0
 ```
