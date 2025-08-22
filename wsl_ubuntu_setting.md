@@ -57,7 +57,9 @@ ls -l /dev/ttyACM*
 ls -l /dev/video*
 ```
 
+
+#### 验证摄像头编号，检测camera脚本：
 ``` 
-验证摄像头编号，检测camera脚本：
+
 ffplay -f v4l2 -input_format mjpeg -video_size 640x480 -framerate 30 -i /dev/video0
 ```
