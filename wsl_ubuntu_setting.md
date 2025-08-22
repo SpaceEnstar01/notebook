@@ -36,13 +36,13 @@ usbipd attach --busid 3-3 --wsl --auto-attach
 sudo modprobe cdc_acm && sudo modprobe ch341 && sudo chown root:dialout /dev/ttyACM* && sudo chmod 666 /dev/ttyACM*
 ```
 
-#### 一键完成摄像头
+#### 一键完成的摄像头
 
 ```bash
 sudo modprobe videodev && sudo modprobe uvcvideo && sudo chgrp video /dev/video* && sudo chmod 666 /dev/video*
 ```
 
-#### 一键完成机械臂 + 摄像头的 USB
+#### 一键完成机械臂的摄像头和机械臂的USB：
 
 ```bash
 sudo modprobe cdc_acm && sudo modprobe ch341 && sudo chown root:dialout /dev/ttyACM* && sudo chmod 666 /dev/ttyACM* && sudo modprobe videodev && sudo modprobe uvcvideo && sudo chgrp video /dev/video* && sudo chmod 666 /dev/video*
@@ -57,9 +57,6 @@ ls -l /dev/ttyACM*
 ls -l /dev/video*
 ```
 
-```
-
- ✅  
-
-
+``` 
+- 代码块前后各空一行，GitHub 渲染更稳。
 ```
