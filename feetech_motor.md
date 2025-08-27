@@ -15,9 +15,9 @@ This script supports:
 - Turn torque on/off (`torque_on` / `torque_off`)  
 
 It also supports three types of input units:  
-- **degrees** (recommended for arm joints)  
-- **m100** (normalized, from -100 to 100)  
-- **raw** (original counts, no normalization)  
+- degrees (recommended for arm joints)  
+- m100 (normalized, from -100 to 100)  
+- raw (original counts, no normalization)  
 
 > Note: The script uses the `FeetechMotorsBus` class, and works with `Goal_Position` / `Present_Position`.  
 You can switch normalization on or off when needed.
