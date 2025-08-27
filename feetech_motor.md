@@ -1,3 +1,82 @@
+# Feetech Motor Test Script
+
+A simple test script for Feetech motors with **scan, read, move, sweep, and torque control**.  
+Supports three input units: `degrees`, `m100`, and `raw`.
+
+好的 👍 我帮你把上面的内容整理成一份 **口语化、简单英文表达的 README.md**，保持所有核心内容不变，只优化格式和表述：
+
+````markdown
+# Feetech Motor Test Script
+
+This script supports:  
+- Scan motors on the bus (`scan`)  
+- Read current position (`read`)  
+- Move to a specific position (`move`)  
+- Sweep back and forth in a range (`sweep`)  
+- Turn torque on/off (`torque_on` / `torque_off`)  
+
+It also supports three types of input units:  
+- **degrees** (recommended for arm joints)  
+- **m100** (normalized, from -100 to 100)  
+- **raw** (original counts, no normalization)  
+
+> Note: The script uses the `FeetechMotorsBus` class, and works with `Goal_Position` / `Present_Position`.  
+You can switch normalization on or off when needed.
+
+---
+
+### Based on
+This script is based on [Feetech Motor Code](https://github.com/SpaceEnstar01/so101/tree/main/lerobot/src/lerobot/motors/feetech).
+
+---
+
+## Usage Examples
+
+1. **Scan motors** (see which IDs are available) ✅
+```bash
+python test_feetech_motor.py --port /dev/ttyACM0 scan
+````
+
+2. **Read current position (in degrees)** ✅
+
+```bash
+python test_feetech_motor.py --port /dev/ttyACM0 --id 1 --unit degrees read
+```
+
+3. **Move motor to 10°**
+
+```bash
+python test_feetech_motor.py --port /dev/ttyACM0 --id 1 --unit degrees move --value 10
+```
+
+4. **Sweep between -30° and 30°**
+
+```bash
+python test_feetech_motor.py --port /dev/ttyACM0 --id 1 --unit degrees sweep --min -30 --max 30 --step 5 --delay 0.4
+```
+
+5. **Use normalized units (-100 to 100)**
+
+```bash
+python test_feetech_motor.py --port /dev/ttyACM0 --id 2 --unit m100 move --value 50
+```
+
+6. **Use raw counts (⚠ careful!)**
+
+```bash
+python test_feetech_motor.py --port /dev/ttyACM0 --id 3 --unit raw move --value 2048
+```
+
+7. **Turn torque on/off**
+
+```bash
+python test_feetech_motor.py --port /dev/ttyACM0 --id 1 torque_on
+python test_feetech_motor.py --port /dev/ttyACM0 --id 1 torque_off
+```
+
+
+
+
 
 ```python 
 # test_feetech_motor.py
