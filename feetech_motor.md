@@ -1,9 +1,8 @@
-# Feetech Motor Test Script
+# Feetech Motor Test Script based on lerobot framework
 
 A simple test script for Feetech motors with **scan, read, move, sweep, and torque control**.  
 Supports three input units: `degrees`, `m100`, and `raw`.
 
-好的 👍 我帮你把上面的内容整理成一份 **口语化、简单英文表达的 README.md**，保持所有核心内容不变，只优化格式和表述：
 
 ````markdown
 # Feetech Motor Test Script
@@ -74,8 +73,11 @@ python test_feetech_motor.py --port /dev/ttyACM0 --id 1 torque_on
 python test_feetech_motor.py --port /dev/ttyACM0 --id 1 torque_off
 ```
 
-
-
+8.**practical examples**
+```bash
+(lerobot) paris@x:~/X/so101/lerobot/src/lerobot/motors$ python test_feetech_motor.py --port /dev/ttyACM0 --id 1 --unit degrees read Present_Position raw=997, degrees=87.64835164835165
+(lerobot) paris@x:~/X/so101/lerobot/src/lerobot/motors$ python test_feetech_motor.py --port /dev/ttyACM0 --id 1 --unit degrees read Present_Position raw=3141, degrees=276.13186813186815
+```
 
 
 ```python 
