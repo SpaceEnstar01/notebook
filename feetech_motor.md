@@ -75,8 +75,10 @@ python test_feetech_motor.py --port /dev/ttyACM0 --id 1 torque_off
 
 8.**practical examples**
 ```bash
-(lerobot) paris@x:~/X/so101/lerobot/src/lerobot/motors$ python test_feetech_motor.py --port /dev/ttyACM0 --id 1 --unit degrees read Present_Position raw=997, degrees=87.64835164835165
-(lerobot) paris@x:~/X/so101/lerobot/src/lerobot/motors$ python test_feetech_motor.py --port /dev/ttyACM0 --id 1 --unit degrees read Present_Position raw=3141, degrees=276.13186813186815
+(lerobot) paris@x:~/X/so101/lerobot/src/lerobot/motors$ python test_feetech_motor.py --port /dev/ttyACM0 --id 1 --unit degrees read
+Output: Present_Position raw=997, degrees=87.64835164835165
+(lerobot) paris@x:~/X/so101/lerobot/src/lerobot/motors$ python test_feetech_motor.py --port /dev/ttyACM0 --id 1 --unit degrees read
+Output: Present_Position raw=3141, degrees=276.13186813186815
 ```
 
 
